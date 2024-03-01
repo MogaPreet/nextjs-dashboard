@@ -4,9 +4,10 @@ export const authConfig = {
   pages: {
     signIn: '/login',
   },
+  secret: "a29d263a33ccdab2475b4ee180e4cdf5",
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
-      const isLoggedIn = auth?.user ?? false;
+      const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
       if (isOnDashboard) {
         if (isLoggedIn) return true;
