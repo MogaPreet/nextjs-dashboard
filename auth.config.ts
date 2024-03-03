@@ -4,7 +4,7 @@ export const authConfig = {
   pages: {
     signIn: '/login',
   },
-  secret: "a29d263a33ccdab2475b4ee180e4cdf5",
+  // secret: "a29d263a33ccdab2475b4ee180e4cdf5",
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
@@ -15,6 +15,7 @@ export const authConfig = {
       } else if (isLoggedIn) {
         return Response.redirect(new URL('/dashboard', nextUrl));
       }
+      
       return true;
     },
   },
